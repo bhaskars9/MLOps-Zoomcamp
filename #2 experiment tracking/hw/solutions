@@ -1,0 +1,21 @@
+# The following are commands to rin the code after modifying it.
+
+Q1
+mlflow --version
+
+Q2
+python preprocess_data.py --raw_data_path ../../data --dest_path ./output
+
+Q3
+python train.py
+mlflow ui
+
+Q4
+artifact_path
+
+Q5
+python hpo.py
+
+Q6
+python register_model.py
+
