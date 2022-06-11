@@ -4,9 +4,6 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from prefect import flow, task
-from prefect.deployments import DeploymentSpec
-from prefect.flow_runners import SubprocessFlowRunner
-from prefect.orion.schemas.schedules import CronSchedule
 from datetime import datetime as dt
 from datetime import timedelta as td
 import pickle
@@ -104,10 +101,3 @@ def main(date = "None"):
     
 main(date="2021-08-15")
 
-DeploymentSpec(
-    flow=main,
-    name="model_training",
-    schedule=CronSchedule(cron="0 9 15 * *", timezone="America/New_York"),
-    flow_runner=SubprocessFlowRunner(),
-    tags=["ml"]
-)
